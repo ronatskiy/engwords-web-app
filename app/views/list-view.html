@@ -1,0 +1,10 @@
+<div class="container text-center">
+	<h2 class="text-center">{{title}}</h2>
+	<p class="lead text-center">{{message}}</p>
+
+	<div class="row" >
+		<div class="col-xs-12" ng-repeat="section in sections">
+			<a href={{section.path}} ng-class=section.bgColor class="well img-responsive">{{section.title}}</a>
+		</div>
+	</div>
+</div>

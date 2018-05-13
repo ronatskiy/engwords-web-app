@@ -1,0 +1,21 @@
+<div class="container text-center">
+	<h2 class="text-center">{{title}}</h2>
+	<p>Осталось слов {{currWord+1}} из {{count}}</p>
+	<div class="container">
+		<div class="progress">
+			<div class="progress-bar progress-bar-success" style={{progressWidthText}}></div>
+		</div>
+		<div class="row">
+			<br>
+			<div class="well well-lg" ng-click=show()>{{words[currWord].Ru}}</div>
+			<div class="well well-lg" ng-click=show() ng-show=isShown>{{words[currWord].Eng}}</div>
+
+			<div class="btn-group btn-group-justified shadow-z-2">
+				<a type="button" class="btn btn-default" ng-click=prev()> ← Назад </a>
+				<a type="button" class="btn btn-default" ng-show=!isShown ng-click=show()> Перевод </a>
+				<a type="button" class="btn btn-default" ng-click=next()> Далее → </a>
+			</div>
+		</div>	
+	</div>
+	
+</div>
