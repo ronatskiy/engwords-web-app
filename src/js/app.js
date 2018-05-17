@@ -1,30 +1,33 @@
-﻿"use strict";
+﻿import angular from "angular";
+import "angular-resource";
+import "angular-route";
 
-var memorizeApp = angular.module("memorizeApp", ["ngRoute", "ngResource"]);
+const memorizeApp = angular.module("memorizeApp", ["ngRoute", "ngResource"]);
+
 memorizeApp.config([
 	"$routeProvider",
 	"$locationProvider",
 	function($routeProvider, $locationProvider) {
 		$routeProvider
 			.when("/", {
-				templateUrl: "views/start-page.html",
+				template: require("../views/start-page.html"),
 				controller: "startPageCtrl",
 			})
 			.when("/list/:type/", {
-				templateUrl: "views/list-view.html",
+				template: require("../views/list-view.html"),
 				controller: "listCtrl",
 			})
 
 			.when("/detail-view/:id", {
-				templateUrl: "views/detail-view.html",
+				template: require("../views/detail-view.html"),
 				controller: "detailViewCtrl",
 			})
 			.when("/learning/:id/:type", {
-				templateUrl: "views/learning.html",
+				template: require("../views/learning.html"),
 				controller: "learningCtrl",
 			})
 			.when("/irregular-verbs", {
-				templateUrl: "views/detail-view.html",
+				template: require("../views/detail-view.html"),
 				controller: "irregularVerbsCtrl",
 			})
 			.otherwise({
@@ -32,3 +35,5 @@ memorizeApp.config([
 			});
 	},
 ]);
+
+export default memorizeApp;

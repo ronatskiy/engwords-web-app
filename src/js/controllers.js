@@ -1,7 +1,9 @@
-"use strict";
+import memorizeApp from "./app";
+import trimStart from "lodash/trimStart";
+import range from "lodash/range";
 
 function setTitle(routeParamId) {
-	var titleField;
+	let titleField;
 	switch (routeParamId) {
 		case "irregular-verbs":
 			titleField = "Неправильные Глаголы";
@@ -14,7 +16,7 @@ function setTitle(routeParamId) {
 			break;
 	}
 	if (routeParamId.startsWith("lesson-")) {
-		titleField = "Урок № " + _.trimLeft(routeParamId, "lesson-");
+		titleField = "Урок № " + trimStart(routeParamId, "lesson-");
 	}
 
 	return titleField;
@@ -75,7 +77,7 @@ memorizeApp.controller("mainCtrl", [
 	function($scope) {
 		$scope.firstLesson = 15;
 		$scope.currLesson = $scope.firstLesson;
-		$scope.lessons = _.range($scope.firstLesson, 28);
+		$scope.lessons = range($scope.firstLesson, 28);
 		$scope.main = {
 			isBrandNameShown: true,
 			firstLesson: $scope.firstLesson,
@@ -184,7 +186,7 @@ memorizeApp.controller("listCtrl", [
 
 		if (type === "lesson" || type === "training") {
 			$scope.sections = [];
-			_.map($scope.lessons, function(elem) {
+			$scope.lessons.map(function(elem) {
 				$scope.sections.push(
 					new BtnComponent(
 						"Урок " + elem,
