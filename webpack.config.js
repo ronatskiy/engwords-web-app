@@ -76,9 +76,9 @@ module.exports = function(env, { mode }) {
 				chunkFilename: isDevMode ? "[id].css" : "[id].[hash].css",
 			}),
 			new HtmlWebpackPlugin({
-				hash: true,
-				inject: "body",
 				template: "./public/index.html",
+				minify: true,
+				inject: "body",
 			}),
 			...(isDevMode ? developmentConfig.plugins : productionConfig.plugins),
 		],
