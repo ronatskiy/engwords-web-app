@@ -2,6 +2,7 @@ const path = require("path");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
 
 module.exports = {
 	mode: "production",
@@ -21,6 +22,7 @@ module.exports = {
 		],
 	},
 	plugins: [
+		new CleanWebpackPlugin(["dist/**/*.*"]),
 		new CopyWebpackPlugin([
 			{
 				from: path.join(__dirname, "public"),

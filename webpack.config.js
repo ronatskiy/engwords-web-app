@@ -12,7 +12,7 @@ function getBaseConfig(isDevMode) {
 		},
 
 		output: {
-			filename: "[name].min.js",
+			filename: "[name].[hash].min.js",
 			path: path.resolve(__dirname, "dist"),
 			publicPath: "/",
 		},
@@ -71,16 +71,17 @@ module.exports = function(env, { mode }) {
 		...(isDevMode ? developmentConfig : productionConfig),
 
 		plugins: [
+			...(isDevMode ? developmentConfig.plugins : productionConfig.plugins),
 			new MiniCssExtractPlugin({
-				filename: isDevMode ? "[name].css" : "[name].[hash].css",
-				chunkFilename: isDevMode ? "[id].css" : "[id].[hash].css",
+				filename: `[name].${isDevMode ? "" : "[contenthash]"}.css`,
+				chunkFilename: `[id].${isDevMode ? "" : "[contenthash]"}.css`,
+				publicPath: "../",
 			}),
 			new HtmlWebpackPlugin({
 				template: "./public/index.html",
 				minify: true,
 				inject: "body",
 			}),
-			...(isDevMode ? developmentConfig.plugins : productionConfig.plugins),
 		],
 	};
 };
