@@ -5,7 +5,7 @@
 		"node": ">=8.0.0"
 	},
 	"scripts": {
-		"predeploy": "npm run dist",
+		"predeploy": "npm run build",
 		"deploy": "gh-pages -d dist",
 		"build": "webpack --mode=production",
 		"start": "webpack-dev-server --mode=development"
