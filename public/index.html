@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="memorizeApp">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+        <title>Eng Words</title>
+    </head>
+    <body ng-controller="mainCtrl">
+        <div class="navbar navbar-inverse z-index-top">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#/" ng-click=exit()>
+                    <span class="mdi-navigation-arrow-back" ng-show="!main.isBrandNameShown"></span>
+                    <span class="lead" ng-show="main.isBrandNameShown"> Memorize</span>
+                </a>
+            </div>
+            <div class="navbar-collapse collapse navbar-inverse-collapse ">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#/list/lesson">Lessons</a></li>
+                    <li><a href="#/list/training">Training</a></li>
+                </ul>
+            </div>
+        </div>
+        <div ng-view></div>
+    </body>
+</html>
